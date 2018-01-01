@@ -1,0 +1,41 @@
+
+
+@import url('~@angular/material/prebuilt-themes/indigo-pink.css');
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+@import '~common/css/normalize.css';
+@import '~common/css/material/_my-material.theme.scss';
+@include my-material();
+
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+.demo-app-header {
+  position: fixed;
+  top: 0;
+  z-index: 2;
+}
+
+.demo-app-container,
+.demo-app-sidenav {
+  padding-top: 64px;
+}
+
+.toolbar-seprator {
+  flex: 1 1 auto;
+}
+
+.demo-app-sidenav {
+  width: 300px;
+}
+
+.done {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+  z-index: 1;
+}

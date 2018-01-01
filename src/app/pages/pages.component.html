@@ -1,0 +1,118 @@
+<div  fxLayout="column" fxFlexFill>
+    <mat-toolbar color="accent" class="demo-app-header">
+
+        <button mat-icon-button (click)="sideNav.toggle()">
+          <mat-icon>{{ sideNav.opened ? 'close' : 'menu' }}</mat-icon>
+        </button>
+
+        <span>哈囉! 這裡是尚庭的小天地!
+          <mat-icon>mood</mat-icon>
+        </span>
+
+        <!-- 在這之後的都會被推到右邊去 -->
+        <span class="toolbar-seprator"></span>
+
+        <button mat-icon-button [mat-menu-trigger-for]="menu">
+          <mat-icon>message</mat-icon>
+        </button>
+        <button mat-icon-button (click)="sideNavEnd.toggle()">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+
+      </mat-toolbar>
+      <mat-menu #menu="matMenu" xPosition="before" yPosition="above">
+        <button mat-menu-item>個人資訊</button>
+        <button mat-menu-item>最新消息</button>
+      </mat-menu>
+
+
+    <mat-sidenav-container class="demo-app-container" fxFlex fxFlexFill>
+
+
+
+        <mat-sidenav #sideNav mode="over" class="demo-app-sidenav" (opened)="opened()" (closed)="closed()">
+          <mat-nav-list>
+            <h3 matSubheader>示範用頁面</h3>
+            <a [routerLink]="['/', 'dashboard', 'survey']" mat-list-item>問卷調查</a>
+            <a [routerLink]="['/', 'dashboard', 'blog']" mat-list-item>部落格</a>
+            <a [routerLink]="['/', 'dashboard', 'inbox']" mat-list-item>收件夾</a>
+            <!-- 另外一組選單 -->
+            <mat-divider></mat-divider>
+            <h3 matSubheader>其他頁面</h3>
+            <a [routerLink]="['/']" mat-list-item>首頁</a>
+            <a [routerLink]="['/']" mat-list-item>Google</a>
+            <a [routerLink]="['/']" mat-list-item>Facebook</a>
+
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <p matLine>床前明月光</p>
+              <p matLine>疑是地上霜</p>
+            </mat-list-item>
+
+
+          </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav #sideNavEnd mode="side" class="demo-app-sidenav" position="end">
+          <mat-nav-list>
+            <h3 matSubheader>好友訊息</h3>
+            <mat-list-item>
+              <img matListAvatar src="https://scontent.ftpe8-4.fna.fbcdn.net/v/t1.0-1/p160x160/17353529_1415966631758883_2442989990024836936_n.jpg?oh=4de9afea262a3945e83896f76b15fae5&oe=5AB2C480" />
+              <p matLine>Zou You Shun</p>
+              <p matLine>hi，大神!!</p>
+              <!-- button會自動被推到最後面 -->
+              <button mat-icon-button>
+                <mat-icon>chat</mat-icon>
+              </button>
+            </mat-list-item>
+            <mat-list-item>
+              <!-- 即使icon button放在前面，還是會被往後推 -->
+              <button mat-icon-button>
+                <mat-icon>chat</mat-icon>
+              </button>
+              <img matListAvatar src="https://scontent.ftpe8-4.fna.fbcdn.net/v/t1.0-1/p160x160/12631553_931150243646987_3161311385541574243_n.jpg?oh=e70c27c39d49af70c5d0dbb1233dc658&oe=5AB5B585"
+              />
+              <p matLine>尚庭</p>
+              <p matLine>我是個灰塵 QAQ</p>
+            </mat-list-item>
+            <!-- <mat-divider></mat-divider>
+            <h3 matSubheader>
+              <mat-icon>chat_bubble</mat-icon>
+              新訊息
+            </h3>
+            <mat-list-item *ngIf="optNew.selected">這是新消息</mat-list-item>
+            <mat-list-item *ngIf="optAds.selected">這是廣告消息</mat-list-item>
+
+            <mat-divider></mat-divider>
+            <h3 matSubheader>
+              <mat-icon>settings</mat-icon>
+              訊息設定
+            </h3>
+            <mat-selection-list>
+              <mat-list-option [value]="1" selected="true" #optNew>有新訊息時通知我</mat-list-option>
+              <mat-list-option [value]="2" #optAds>顯示廣告訊息</mat-list-option>
+            </mat-selection-list> -->
+          </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+         <mat-drawer-container style="height:100px;margin:10px;border: 1px solid black">
+            <!-- <mat-drawer mode="over" opened="true">Drawer Side</mat-drawer> -->
+            <mat-drawer-content>
+              Content
+            </mat-drawer-content>
+          </mat-drawer-container>
+
+          <router-outlet></router-outlet>
+
+          <span class="done">
+              <button mat-fab>
+                <mat-icon>check circle</mat-icon>
+              </button>
+            </span>
+
+        </mat-sidenav-content>
+
+      </mat-sidenav-container>
+
+</div>
